@@ -4,6 +4,9 @@ import 'dotenv/config'
 const email = process.env.MF_EMAIL as string;
 const password = process.env.MF_PASSWORD as string;
 
+const workStartTime = process.env.WORK_START_TIME as string;
+const workEndTime = process.env.WORK_END_TIME as string;
+
 const month = 3;
 
 test('test', async ({ page }) => {
@@ -46,10 +49,10 @@ test('test', async ({ page }) => {
     await page.locator('select[name="attendance_form\\[attendance_record_forms_attributes\\]\\[1\\]\\[event\\]"]').selectOption('clock_out')
 
     // Fill input[name="attendance_form\[attendance_record_forms_attributes\]\[0\]\[time\]"]
-    await page.locator('input[name="attendance_form\\[attendance_record_forms_attributes\\]\\[0\\]\\[time\\]"]').fill('9:00');
+    await page.locator('input[name="attendance_form\\[attendance_record_forms_attributes\\]\\[0\\]\\[time\\]"]').fill(workStartTime);
 
     // Fill input[name="attendance_form\[attendance_record_forms_attributes\]\[1\]\[time\]"]
-    await page.locator('input[name="attendance_form\\[attendance_record_forms_attributes\\]\\[1\\]\\[time\\]"]').fill('18:00');
+    await page.locator('input[name="attendance_form\\[attendance_record_forms_attributes\\]\\[1\\]\\[time\\]"]').fill(workEndTime);
 
     // Click text=保存
     await Promise.all([
