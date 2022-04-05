@@ -56,7 +56,7 @@ test('test', async ({ page }) => {
 
     // Click text=保存
     await Promise.all([
-      page.waitForNavigation(/*{ url: 'https://attendance.moneyforward.com/my_page/attendances?day=28&month=2&year=2022' }*/),
+      page.waitForNavigation(),
       page.locator('text=保存').click()
     ]);
 
